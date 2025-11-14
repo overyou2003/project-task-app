@@ -23,7 +23,7 @@ const HomePage = () => {
             </Link>
           </Button>
         </div>
-        <div>
+        <div className="w-1/3 transition-all duration-200 skew-1 hover:skew-0 hover:scale-105">
           <ProjectDashMock />
         </div>
       </div>
