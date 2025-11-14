@@ -3,7 +3,7 @@ import { ListTodo } from 'lucide-react';
 import { Button } from "@/components/ui/button"
 const Navbar = () => {
   return (
-    <nav className='flex justify-between px-20 py-5 bg-transparent items-center font-sans'>
+    <nav className='flex justify-between px-20 py-5 bg-transparent items-center'>
         <div className='flex'>
             <Link href="/" className='flex gap-2 font-bold text-xl items-center'>
                 <ListTodo className='bg-linear-65 from-blue-500 to-purple-500 p-2 rounded-lg' size={40} color='#fff'/>TASKFLOW
