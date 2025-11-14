@@ -120,3 +120,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .btn-linear {
+    @apply bg-linear-to-r from-sky-500 to-purple-500 hover:from-blue-600 
+    hover:to-purple-600 text-white p-6 mt-5 rounded-lg font-semibold text-base 
+    transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .title-content {
+    @apply font-extrabold tracking-tight text-balance
+  }
+
+  .subtitle-content {
+    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+  }
+}
