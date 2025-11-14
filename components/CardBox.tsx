@@ -8,21 +8,26 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const CardBox = () => {
+interface CardBoxProps {
+  icon : React.ReactNode;
+  title : string;
+  description : string;
+  children? : React.ReactNode;
+}
+
+const CardBox = ({icon, title, description, children}: CardBoxProps) => {
   return (
-    <div>
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm m-4 card-box-animate">
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          {icon}
+          <CardTitle>{title}</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            {description}
           </CardDescription>
           <CardAction></CardAction>
         </CardHeader>
-        <CardContent></CardContent>
-        <CardFooter></CardFooter>
+        <CardContent>{children}</CardContent>
       </Card>
-    </div>
   );
 };
 export default CardBox;
