@@ -1,6 +1,6 @@
 export const ProjectDashMock = () => {
   return (
-    <div className="flex items-center justify-center bg-gray-50 p-10">
+    <div className="flex items-center justify-center p-10">
       <div className="w-full max-w-3xl rounded-2xl border border-gray-100 bg-white p-6 shadow-2xl">
         <header className="mb-6 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-800">
