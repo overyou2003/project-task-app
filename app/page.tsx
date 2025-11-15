@@ -37,7 +37,7 @@ const HomePage = () => {
           <p className="text-gray-500">Powerful features designed to help teams collaborate efficiently and <br />deliver projects on time.</p>
         </div>
       </div>
-      <div className="flex px-10 py-20 justify-center flex-wrap">
+      <div className="flex px-10 py-19 justify-center flex-wrap">
         <CardBox 
           icon={<RiTeamFill className="text-4xl text-cyan-500" />}
           title="Team Collaboration"
