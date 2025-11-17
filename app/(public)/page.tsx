@@ -1,4 +1,4 @@
-import CardBox from "@/components/CardBox";
+import CardBox from "@/components/cardBox";
 import { ProjectDashMock } from "@/components/ProjectDashMock";
 import { Button } from "@/components/ui/button";
 import Link from "next/dist/client/link";
