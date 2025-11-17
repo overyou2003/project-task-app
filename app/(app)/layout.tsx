@@ -6,7 +6,7 @@ export default function AppLayout({
 }) {
   return (
     <div className="flex min-h-screen">
-      <main className="flex-1 p-8">
+      <main className="flex-1">
         {children}
       </main>
     </div>
