@@ -25,7 +25,7 @@ export function TeamSwitcher({
   teams: {
     name: string
     logo: React.ElementType
-    plan: string
+    plan: string | null
   }[]
 }) {
   const { isMobile } = useSidebar()
@@ -41,10 +41,10 @@ export function TeamSwitcher({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              size="default"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground px-10"
             >
-              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-5 items-center justify-center rounded-lg">
                 <activeTeam.logo className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
