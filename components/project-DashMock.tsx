@@ -1,21 +1,21 @@
 export const ProjectDashMock = () => {
   return (
-    <div className="flex items-center justify-center p-10">
+    <div className="flex items-center justify-center">
       <div className="w-full max-w-3xl rounded-2xl border border-gray-100 bg-white p-6 shadow-2xl">
-        <header className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-800">
+        <header className="mb-4 md:mb-6 flex items-center justify-between">
+          <h2 className="text-xs md:text-lg font-semibold text-gray-800">
             Project Dashboard
           </h2>
 
-          <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-red-400"></span>
-            <span className="h-3 w-3 rounded-full bg-yellow-400"></span>
-            <span className="h-3 w-3 rounded-full bg-green-400"></span>
+          <div className="flex items-center gap-1.5 md:gap-2">
+            <span className="h-2 w-2 md:h-3 md:w-3 rounded-full bg-red-400"></span>
+            <span className="h-2 w-2 md:h-3 md:w-3 rounded-full bg-yellow-400"></span>
+            <span className="h-2 w-2 md:h-3 md:w-3 rounded-full bg-green-400"></span>
           </div>
         </header>
 
-        <main className="grid grid-cols-3 gap-5">
-          <div className="rounded-xl bg-pink-50 p-4">
+        <main className="grid grid-cols-3 gap-2 md:gap-5">
+          <div className="rounded-lg md:rounded-xl bg-pink-50 p-2 md:p-4">
             <h3 className="mb-4 text-sm font-medium text-pink-700">To Do</h3>
 
             <div className="flex flex-col gap-3">
