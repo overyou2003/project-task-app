@@ -1,5 +1,5 @@
 import CardBox from "@/components/cardBox";
-import { ProjectDashMock } from "@/components/ProjectDashMock";
+import { ProjectDashMock } from "@/components/projectDashMock";
 import { Button } from "@/components/ui/button";
 import Link from "next/dist/client/link";
 import { FaArrowRightLong } from "react-icons/fa6";
