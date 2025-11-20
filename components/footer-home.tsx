@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between p-4 px-20 items-center bg-linear-to-r from-blue-50 to-white">
+    <footer className="flex flex-col justify-center gap-6 xl:flex-row xl:justify-between p-6 xl:px-20 items-center bg-linear-to-r from-blue-50 to-white">
         <div>
             <Link href="/" className='flex gap-2 font-bold text-sm items-center text-gray-500'>
                 <ListTodo className='bg-linear-65 from-blue-500 to-purple-500 p-2 rounded-lg' size={30} color='#fff'/>TASKFLOW
@@ -19,7 +19,7 @@ const Footer = () => {
             <Link href="https://github.com"><FaGithub size={20} className="hover:text-blue-500"/></Link>
             <Link href="https://instagram.com"><FaSquareInstagram size={20} className="hover:text-blue-500"/></Link>
         </div>
-        <div className='text-center p-4 text-gray-500'>© 2025 TaskFlow. All rights reserved.</div>
+        <div className='text-center xl:p-4 text-gray-500'>© 2025 TaskFlow. All rights reserved.</div>
     </footer>
   )
 }
