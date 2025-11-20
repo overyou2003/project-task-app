@@ -8,27 +8,42 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import AvatarUser from "./avatar-user";
+
 interface CardBoxProps {
-  title : string;
-  subtitle : string;
-  progress : number;
-  duedate : Date;
-  children? : React.ReactNode;
+  title: string;
+  subtitle: string;
+  progress: number;
+  duedate?: number;
+  children?: React.ReactNode;
 }
 
-const CardBox = ({title, subtitle, progress , duedate , children}: CardBoxProps) => {
+const CardProject = ({
+  title,
+  subtitle,
+  progress,
+  duedate,
+  children,
+}: CardBoxProps) => {
   return (
-      <Card className="w-full max-w-sm m-4 card-box-animate">
-        <CardHeader>
-          
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>
-            
-          </CardDescription>
-          <CardAction></CardAction>
-        </CardHeader>
-        <CardContent>{children}</CardContent>
-      </Card>
+    <Card className="w-full max-w-sm m-4 card-box-animate">
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{subtitle}</CardDescription>
+        <CardAction></CardAction>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-row flex-wrap items-center gap-12 justify-between">
+          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+            <AvatarUser/>
+            <AvatarUser/>
+            <AvatarUser/>
+          </div>
+          <div className="text-sm text-gray-500">Due in 5 days</div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
-export default CardBox;
+export default CardProject;
