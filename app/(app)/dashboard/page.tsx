@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/components/app-sidebar";
 import { CiSearch } from "react-icons/ci";
 import {
   Breadcrumb,
@@ -7,17 +7,19 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/breadcrumb";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 import { Avatar } from "@radix-ui/react-avatar";
 import { NavUser } from "@/components/nav-user";
 import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import CardProject from "@/components/cardProject";
+import CreateFixBtn from "@/components/create-fixed-button";
 
 const data = {
   user: {
@@ -25,7 +27,7 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/dreams.jpg",
   },
-}
+};
 
 export default function DashboardPage() {
   return (
@@ -54,9 +56,9 @@ export default function DashboardPage() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb> */}
-            <CiSearch size={24} className="text-gray-500"
-            />
-            <Input placeholder="Search projects tasks, or people..." 
+            <CiSearch size={24} className="text-gray-500" />
+            <Input
+              placeholder="Search projects tasks, or people..."
               className="w-[250px] md:w-[450px] lg:w-[500px]"
             />
           </div>
@@ -67,17 +69,23 @@ export default function DashboardPage() {
               <AvatarFallback className="rounded-lg">CN</AvatarFallback>
             </Avatar>
           </div>
-          
         </header>
+
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-4">
+            {/* <div className="bg-muted/50 aspect-video rounded-xl" />
             <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
+            <div className="bg-muted/50 aspect-video rounded-xl" /> */}
+            <CardProject
+              title="Retospective"
+              subtitle="dsadsadd"
+              progress={10}
+              duedate={10}
+            />
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <CreateFixBtn/>
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
