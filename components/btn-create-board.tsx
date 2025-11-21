@@ -3,13 +3,11 @@ import { Button } from "@/components/ui/button";
 
 const CreateFixBtn = () => {
   return (
-    <div className="relative">
-      <div className="absulute">
-        <Button variant="outline" size="icon">
+      <div>
+        <Button variant="outline" size="icon-lg">
           <CirclePlus />
         </Button>
       </div>
-    </div>
   );
 };
 export default CreateFixBtn;
