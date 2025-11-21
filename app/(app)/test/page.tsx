@@ -1,36 +1,18 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+"use client";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const TestPage = () => {
-   return (
-    <div className="flex flex-row flex-wrap items-center gap-12">
-      
-      
-      <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarImage
-            src="https://github.com/maxleiter.png"
-            alt="@maxleiter"
-          />
-          <AvatarFallback>LR</AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarImage
-            src="https://github.com/evilrabbit.png"
-            alt="@evilrabbit"
-          />
-          <AvatarFallback>ER</AvatarFallback>
-        </Avatar>
-      </div>
+  return (
+    <div className="flex w-full max-w-sm items-center gap-2">
+      <form action="{createProject}">
+        <Input type="text" placeholder="Name" name="name" required/>
+        <Button type="submit" variant="outline">
+          Send
+        </Button>
+      </form>
     </div>
-  )
-}
-export default TestPage
+  );
+};
+export default TestPage;

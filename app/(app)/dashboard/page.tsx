@@ -1,13 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { CiSearch } from "react-icons/ci";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -19,7 +11,7 @@ import { Avatar } from "@radix-ui/react-avatar";
 import { NavUser } from "@/components/nav-user";
 import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import CardProject from "@/components/cardProject";
-import CreateFixBtn from "@/components/create-fixed-button";
+import CreateFixBtn from "@/components/btn-create-board";
 
 const data = {
   user: {
@@ -41,21 +33,6 @@ export default function DashboardPage() {
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
             />
-
-            {/* ถ้าหากต้องการใช้ Breadcrumb */}
-            {/* <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb> */}
             <CiSearch size={24} className="text-gray-500" />
             <Input
               placeholder="Search projects tasks, or people..."
@@ -71,7 +48,7 @@ export default function DashboardPage() {
           </div>
         </header>
 
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0 relative">
           <div className="grid auto-rows-min md:grid-cols-4">
             {/* <div className="bg-muted/50 aspect-video rounded-xl" />
             <div className="bg-muted/50 aspect-video rounded-xl" />
@@ -83,7 +60,9 @@ export default function DashboardPage() {
               duedate={10}
             />
           </div>
-          <CreateFixBtn/>
+          <div className="absolute right-10 bottom-10">
+            <CreateFixBtn/>
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
