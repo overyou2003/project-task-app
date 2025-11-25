@@ -12,6 +12,7 @@ import { NavUser } from "@/components/nav-user";
 import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import CardProject from "@/components/cardProject";
 import CreateFixBtn from "@/components/btn-create-board";
+import CreateCardProject from "@/components/create-card-project";
 
 const data = {
   user: {
@@ -59,9 +60,6 @@ export default function DashboardPage() {
               progress={10}
               duedate={10}
             />
-          </div>
-          <div className="absolute right-10 bottom-10">
-            <CreateFixBtn/>
           </div>
         </div>
       </SidebarInset>
