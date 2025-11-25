@@ -1,25 +1,21 @@
 "use client"
 
 import * as React from "react"
-import { IoChatboxEllipses } from "react-icons/io5";
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
   ListTodo,
 } from "lucide-react"
 
+import { GoGraph } from "react-icons/go";
+import { IoSettingsSharp } from "react-icons/io5";
+
+
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -27,14 +23,14 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { Avatar } from "@radix-ui/react-avatar";
+import { NavLogout } from "./nav-logout";
 
 // This is sample data.
 const data = {
   user: {
     name: "Dreams",
     email: "m@example.com",
-    avatar: "/avatars/dreams.jpg",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   teams: [
     {
@@ -57,7 +53,7 @@ const data = {
     {
       title: "Dashboard",
       url: "#",
-      icon: SquareTerminal,
+      icon: GoGraph,
       isActive: true,
       items: [
         {
@@ -94,33 +90,10 @@ const data = {
         },
       ],
     },
-    // {
-    //   title: "Chat",
-    //   url: "#",
-    //   icon: IoChatboxEllipses,
-    //   items: [
-    //     {
-    //       title: "General",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Team",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Billing",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Limits",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
     {
       title: "Settings",
       url: "#",
-      icon: Settings2,
+      icon: IoSettingsSharp,
       items: [
         {
           title: "Profile",
@@ -136,14 +109,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <NavUser user={data.user} />
-        <hr />
-        <TeamSwitcher teams={data.teams} />
-        <hr />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
+        <NavLogout/>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
