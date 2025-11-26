@@ -16,7 +16,7 @@ export function NavUser({
 }: {
   user: {
     name: string
-    email: string
+    role: string
     avatar: string
   }
 }) {
@@ -34,7 +34,7 @@ export function NavUser({
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate text-xs text-gray-500">{user.role}</span>
               </div>
             </SidebarMenuButton>
       </SidebarMenuItem>

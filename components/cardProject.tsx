@@ -27,7 +27,7 @@ const CardProject = ({
   children,
 }: CardBoxProps) => {
   return (
-    <Card className="w-full max-w-sm md:max-w-lg m-4 card-box-animate">
+    <Card className="w-full max-w-sm md:max-w-lg lg:max-w-full card-box-animate">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{subtitle}</CardDescription>
