@@ -29,41 +29,16 @@ import { NavLogout } from "./nav-logout";
 const data = {
   user: {
     name: "Dreams",
-    email: "m@example.com",
+    role: "Intern",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: null,
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: null,
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: null,
-    },
-  ],
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: GoGraph,
       isActive: true,
       items: [
-        {
-          title: "My Dashboard",
-          url: "/dashboard",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
       ],
     },
     
@@ -72,27 +47,11 @@ const data = {
       url: "#",
       icon: ListTodo,
       items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
       ],
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/setting-profile",
       icon: IoSettingsSharp,
       items: [
         {
@@ -114,7 +73,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavLogout/>
+        <NavLogout />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
