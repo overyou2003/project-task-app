@@ -14,9 +14,9 @@ import { Label } from "@/components/ui/label";
 
 export default function RegisterPageView() {
   return (
-    <div className="flex justify-center bg-gradient-to-r from-blue-50 to-white px-4">
+    <div className="flex justify-center">
       <Card className="w-full max-w-sm">
-        <CardHeader className="justify-center">
+        <CardHeader className="justify-center py-5">
           <CardTitle className="text-3xl text-center font-semibold flex gap-2">
             Create Your Account
           </CardTitle>
@@ -75,12 +75,12 @@ export default function RegisterPageView() {
           <Button type="submit" className="w-full" variant="registerBtn">
             Submit
           </Button>
-          <hr className="w-full border-t border-gray-500" />
+          <hr className="w-full border-t border-gray-300" />
           <a
             href="/login"
-            className="inline-block text-lg underline-offset-4 hover:underline text-blue-500!"
+            className="inline-block text-lg underline-offset-4 hover:underline hover:text-gray-500 text-gray-400 font-semibold transition-all duration-100"
           >
-            Already have an account?
+            Already have an account ?
           </a>
           {/* <Button variant="outline" className="w-full">
             Login with Google
