@@ -1,10 +1,8 @@
-import RegisterPageView from "@/components/modules/register-page/view/register-page-view"
+import RegisterPageView from "@/components/modules/register-page/view/register-page-view";
 
 const RegisterPage = () => {
   return (
-    <div>
-        <RegisterPageView />
-    </div>
-  )
-}
-export default RegisterPage
+    <RegisterPageView />
+  );
+};
+export default RegisterPage;

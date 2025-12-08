@@ -12,7 +12,7 @@ export default function PublicLayout({
         <Navbar />
       </header>
       <main className="flex-1 flex flex-col justify-center ">
-        <div>{children}</div>
+        {children}
       </main>
     </div>
   );
