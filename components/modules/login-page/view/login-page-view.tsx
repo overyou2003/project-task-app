@@ -44,13 +44,14 @@ export default function LoginPageView() {
     },
   });
 
-  function onSubmit(values: LoginFormValues) {
+  async function onSubmit(values: LoginFormValues) {
     const user = users.find(
       (user) => user.email === values.email && user.password === values.password
     );
 
     if (user) {
       console.log("Login successful");
+      await new Promise((resolve) => setTimeout(resolve, 1500));
       form.reset({ email: "", password: "" });
       router.push("/dashboard");
     } else {
