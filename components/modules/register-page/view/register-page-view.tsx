@@ -61,7 +61,7 @@ export default function RegisterPageView() {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center w-full h-full mt-15">
       <Card className="w-full max-w-sm">
         <CardHeader className="justify-center py-5">
           <CardTitle className="text-3xl text-center font-semibold flex gap-2">
