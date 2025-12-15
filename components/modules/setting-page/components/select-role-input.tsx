@@ -27,7 +27,7 @@ export default function MyCreatableSelect() {
   };
 
   return (
-    <div className="max-w-full mx-auto">
+    <div className="max-w-full mx-auto mt-2">
       <CreatableSelect
         isClearable
         options={options}
