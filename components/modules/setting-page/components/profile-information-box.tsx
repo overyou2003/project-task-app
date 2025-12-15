@@ -3,7 +3,7 @@ import MyCreatableSelect from "./select-role-input";
 
 const ProfileInformation = () => {
   return (
-    <div className="w-full col-span-1 lg:col-span-3 p-6 rounded-lg bg-white shadow-sm">
+    <div className="w-full col-span-1 lg:col-span-2 p-6 rounded-lg bg-white shadow-sm row-span-2">
       <div className="flex justify-between">
         <h1 className="font-semibold text-xl">Profile Information</h1>
         <a href="#" className="text-blue-700">

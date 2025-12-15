@@ -21,10 +21,9 @@ const SettingPageView = () => {
         <h1 className="text-3xl font-bold">Account Settings</h1>
         <p>Manage your profile information and preferences</p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 lg:grid-flow-col gap-5 lg:grid-rows-2">
         <ProfileInformation />
         <DangerZoneBox />
-        <PreferencesBox />
         <SaveBox />
       </div>
     </div>
