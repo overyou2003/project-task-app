@@ -4,8 +4,7 @@ import TodoBox from "../components/todo-box";
 
 const ProjectPageView = () => {
   return (
-    <div className="px-8 w-full h-full">
-      <h1 className="font-semibold text-2xl my-5">ProjectName</h1>
+    <div className="px-8 py-5 w-full h-full bg-blue-50">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <TodoBox/>
         <InprogressBox/>

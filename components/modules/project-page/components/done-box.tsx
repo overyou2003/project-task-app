@@ -9,7 +9,7 @@ const DoneBox = () => {
       </div>
       <div
         className="flex items-center gap-2 justify-center border-3 border-dotted 
-          rounded-lg p-2 text-gray-500 hover:text-gray-800 hover:border-gray-500 
+          rounded-lg p-2 text-gray-500 hover:text-gray-800 hover:border-gray-400 
           cursor-pointer transition duration-200 my-5"
       >
         <span>
