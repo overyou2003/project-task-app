@@ -7,7 +7,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-500 to-purple-500">
+    <div className="flex flex-col min-h-screen bg-gradient-to-r">
       <header>
         <Navbar />
       </header>

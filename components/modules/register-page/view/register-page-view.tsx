@@ -25,9 +25,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ListTodo } from "lucide-react";
 
 export default function RegisterPageView() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(RegisterSchema),
@@ -36,39 +38,54 @@ export default function RegisterPageView() {
       password: "",
       confirmPassword: "",
       fullName: "",
-      phoneNumber: "",
+      // phoneNumber: "",
     },
   });
 
   async function onSubmit(values: RegisterFormValues) {
     setServerError(null);
-    console.log("Submitting Register data:", values);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      const success = true;
+    setLoading(true);
 
-      if (success) {
-        console.log("Registration successful!");
-        form.reset();
-        router.push("/login?registered=true");
-      } else {
-        const errorMessage = "This email is already registered.";
-        setServerError(errorMessage);
+    try {
+      const data = {
+        email: values.email,
+        password: values.password,
+        name: values.fullName,
+      };
+
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Register failed");
       }
+
+      router.push("/login");
+      form.reset();
     } catch (error) {
       setServerError("Network error. Could not connect to the server.");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
     <div className="flex justify-center w-full h-full mt-15">
       <Card className="w-full max-w-sm">
-        <CardHeader className="justify-center py-5">
-          <CardTitle className="text-3xl text-center font-semibold flex gap-2">
-            Create Your Account
+        <CardHeader className="justify-center py-5 text-center justify-items-center">
+          <ListTodo
+            className="bg-gradient-to-br from-blue-500 to-purple-500 p-2 rounded-lg w- h-8 md:w-10 md:h-10"
+            color="#fff"
+          />
+          <CardTitle className="text-3xl text-center font-semibold flex gap-2 justify-center">
+            DreamsTask!
           </CardTitle>
+          สมัครสมาชิกเพื่อเริ่มต้นใช้งาน
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-10">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               {/* Email */}
@@ -78,7 +95,7 @@ export default function RegisterPageView() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Email<span className="text-red-500">*</span>
+                      อีเมล<span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -99,13 +116,13 @@ export default function RegisterPageView() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Password<span className="text-red-500">*</span>
+                      รหัสผ่าน<span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         id="password"
                         type="password"
-                        placeholder="Enter your password"
+                        placeholder="กรอกรหัสผ่านของคุณ"
                         {...field}
                       />
                     </FormControl>
@@ -120,13 +137,13 @@ export default function RegisterPageView() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Confirm Password<span className="text-red-500">*</span>
+                      ยืนยันรหัสผ่าน<span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         id="confirmPassword"
                         type="password"
-                        placeholder="Enter your password"
+                        placeholder="กรอกยืนยันรหัสผ่านของคุณ"
                         {...field}
                       />
                     </FormControl>
@@ -141,13 +158,13 @@ export default function RegisterPageView() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Full Name<span className="text-red-500">*</span>
+                      ชื่อเล่น<span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         id="fullName"
                         type="text"
-                        placeholder="Enter your full name"
+                        placeholder="กรอกชื่อเล่นของคุณ"
                         {...field}
                       />
                     </FormControl>
@@ -155,7 +172,7 @@ export default function RegisterPageView() {
                   </FormItem>
                 )}
               />
-              {/* Phone Number */}
+              {/* Phone Number
               <FormField
                 control={form.control}
                 name="phoneNumber"
@@ -175,14 +192,14 @@ export default function RegisterPageView() {
                     <FormMessage />
                   </FormItem>
                 )}
-              />
+              /> */}
               <Button
                 type="submit"
                 className="w-full mt-4"
                 variant="registerBtn"
-                disabled={form.formState.isSubmitting}
+                disabled={loading}
               >
-                {form.formState.isSubmitting ? "กำลังลงทะเบียน..." : "Submit"}
+                {loading ? "กำลังลงทะเบียน..." : "ดำเนินการต่อ"}
               </Button>
             </form>
           </Form>
