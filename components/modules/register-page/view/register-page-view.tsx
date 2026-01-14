@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ListTodo } from "lucide-react";
+import { ListTodo, Loader2 } from "lucide-react";
 
 export default function RegisterPageView() {
   const router = useRouter();
@@ -59,8 +59,12 @@ export default function RegisterPageView() {
         body: JSON.stringify(data),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error("Register failed");
+        console.log("test");
+        setServerError(result.error);
+        return;
       }
 
       router.push("/login");
@@ -106,6 +110,10 @@ export default function RegisterPageView() {
                       />
                     </FormControl>
                     <FormMessage />
+                    {/* Error จาก server (email ซ้ำ) */}
+                    {serverError && (
+                      <p className="text-red-500 text-sm mt-1">{serverError}</p>
+                    )}
                   </FormItem>
                 )}
               />
@@ -199,6 +207,7 @@ export default function RegisterPageView() {
                 variant="registerBtn"
                 disabled={loading}
               >
+                {loading && <Loader2 className="h-4 w-4 animate-spin" />}
                 {loading ? "กำลังลงทะเบียน..." : "ดำเนินการต่อ"}
               </Button>
             </form>
