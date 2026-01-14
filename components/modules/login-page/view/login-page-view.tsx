@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginSchema, LoginFormValues } from "@/schemas/login"; 
+import { LoginSchema, LoginFormValues } from "@/schemas/login";
 import { useRouter } from "next/navigation";
 
 import {
@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { ListTodo } from "lucide-react";
+import { ListTodo, Loader2 } from "lucide-react";
 import {
   Card,
   CardAction,
@@ -27,15 +27,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 export default function LoginPageView() {
   const router = useRouter();
-  const users = [
-    {
-      email: "user@example.com",
-      password: "12345678",
-    },
-  ];
+  const [loading, setLoading] = useState(false);
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -45,24 +41,56 @@ export default function LoginPageView() {
   });
 
   async function onSubmit(values: LoginFormValues) {
-    const user = users.find(
-      (user) => user.email === values.email && user.password === values.password
-    );
+    // if (user) {
+    //   console.log("Login successful");
+    //   await new Promise((resolve) => setTimeout(resolve, 1500));
+    //   form.reset({ email: "", password: "" });
+    //   router.push("/dashboard");
+    // } else {
+    //   form.setError("email", {
+    //     type: "manual",
+    //     message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+    //   });
+    //   form.setError("password", {
+    //     type: "manual",
+    //     message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+    //   });
+    // }
+    setLoading(true);
+    try {
+      const data = {
+        email: values.email,
+        password: values.password,
+      };
 
-    if (user) {
-      console.log("Login successful");
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      form.reset({ email: "", password: "" });
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        console.log(result.error);
+        form.setError("email", {
+          type: "manual",
+          message: "",
+        });
+        form.setError("password", {
+          type: "manual",
+          message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+        });
+        //setServerError(result.error);
+        return;
+      }
+
       router.push("/dashboard");
-    } else {
-      form.setError("email", {
-        type: "manual",
-        message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
-      });
-      form.setError("password", {
-        type: "manual",
-        message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
-      });
+      form.reset();
+    } catch (error) {
+      //setServerError("Network error. Could not connect to the server.");
+    } finally {
+      setLoading(false);
     }
   }
   return (
@@ -74,10 +102,10 @@ export default function LoginPageView() {
               className="bg-gradient-to-br from-blue-500 to-purple-500 p-2 rounded-lg w-8 h-8 md:w-10 md:h-10"
               color="#fff"
             />
-            TaskFlow
+            DreamsTask
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-10">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               {/* Email */}
@@ -87,7 +115,7 @@ export default function LoginPageView() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Email<span className="text-red-500">*</span>
+                      อีเมล<span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -110,13 +138,13 @@ export default function LoginPageView() {
                   <FormItem>
                     <div className="flex items-center">
                       <FormLabel>
-                        Password<span className="text-red-500">*</span>
+                        รหัสผ่าน<span className="text-red-500">*</span>
                       </FormLabel>
                       <a
                         href="/forgot-password"
                         className="ml-auto inline-block text-sm underline-offset-4 hover:underline text-blue-500"
                       >
-                        Forgot password?
+                        ลืมรหัสผ่าน?
                       </a>
                     </div>
                     <FormControl>
@@ -136,9 +164,10 @@ export default function LoginPageView() {
                 type="submit"
                 className="w-full mt-4"
                 variant="loginBtn"
-                disabled={form.formState.isSubmitting}
+                disabled={loading}
               >
-                {form.formState.isSubmitting ? "กำลังเข้าสู่ระบบ..." : "Login"}
+                {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+                {loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
               </Button>
             </form>
           </Form>
@@ -148,13 +177,13 @@ export default function LoginPageView() {
           <hr className="w-full border-t border-gray-300" />
           <div className="flex gap-1 items-center justify-center">
             <p className="text-sm lg:text-base text-gray-400 font-semibold">
-              Doesn&apos;t have an account ?
+              ไม่มีบัญชีใช่ไหม ?
             </p>
             <a
               href="/register"
               className="text-sm lg:text-base underline-offset-4 hover:underline text-blue-600 font-semibold"
             >
-              Signup
+              ลงทะเบียน
             </a>
           </div>
         </CardFooter>
