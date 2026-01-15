@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
-export function verifyToken(req: Request) {
-  const token = req.headers.get("authorization")?.split(" ")[1];
+export async function verifyToken() {
+  const token = (await cookies()).get("token")?.value;
 
   if (!token) {
-    throw new Error("No token provided");
+    throw new Error("Unauthorized");
   }
 
   return jwt.verify(token, process.env.JWT_SECRET!);

@@ -203,7 +203,7 @@ export default function RegisterPageView() {
               /> */}
               <Button
                 type="submit"
-                className="w-full mt-4"
+                className="w-full mt-4 primary-button-color"
                 variant="registerBtn"
                 disabled={loading}
               >

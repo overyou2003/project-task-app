@@ -1,6 +1,7 @@
+import prisma from "@/src/lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import prisma from "@/src/lib/prisma";
+import { cookies } from "next/headers";
 
 export async function POST(req: Request) {
   const { email, password } = await req.json();
@@ -17,16 +18,21 @@ export async function POST(req: Request) {
     return Response.json({ error: "Wrong password" }, { status: 401 });
   }
 
-  const secret = process.env.JWT_SECRET;
+  const token = jwt.sign(
+    { userId: user.id },
+    process.env.JWT_SECRET!,
+    { expiresIn: "7d" }
+  );
 
-  if (!secret) {
-    return Response.json(
-      { error: "JWT_SECRET is not defined" },
-      { status: 500 }
-    );
-  }
+  // ✅ Set HttpOnly Cookie
+  (await
+    // ✅ Set HttpOnly Cookie
+    cookies()).set("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    path: "/",
+  });
 
-  const token = jwt.sign({ userId: user.id }, secret, { expiresIn: "7d" });
-
-  return Response.json({ token });
+  return Response.json({ message: "Login success" });
 }
