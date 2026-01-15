@@ -13,11 +13,11 @@ const Navbar = () => {
             className="bg-gradient-to-br from-blue-500 to-purple-500 p-2 rounded-lg w-8 h-8 md:w-10 md:h-10"
             color="#fff"
           />
-          TASKFLOW
+          DreamsTask
         </Link>
       </div>
-      <div className="flex gap-2 md:gap-4 items-center text-gray-500 hover:text-gray-700">
-        <Link href="/login" className="text-sm md:text-base font-medium">
+      <div className="flex gap-2 md:gap-4 items-center">
+        <Link href="/login" className="text-sm md:text-base font-medium text-gray-500 hover:text-gray-700">
           Login
         </Link>
         <Button
@@ -25,7 +25,7 @@ const Navbar = () => {
           className="bg-blue-500 hover:bg-blue-600 
             text-white font-semibold h-9 px-3 text-sm md:h-10 md:px-4 md:text-base rounded-lg transition-colors duration-300"
         >
-          <Link href="/register">Sign Up</Link>
+          <Link href="/register">Register</Link>
         </Button>
       </div>
     </nav>
