@@ -41,21 +41,6 @@ export default function LoginPageView() {
   });
 
   async function onSubmit(values: LoginFormValues) {
-    // if (user) {
-    //   console.log("Login successful");
-    //   await new Promise((resolve) => setTimeout(resolve, 1500));
-    //   form.reset({ email: "", password: "" });
-    //   router.push("/dashboard");
-    // } else {
-    //   form.setError("email", {
-    //     type: "manual",
-    //     message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
-    //   });
-    //   form.setError("password", {
-    //     type: "manual",
-    //     message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
-    //   });
-    // }
     setLoading(true);
     try {
       const data = {
@@ -82,14 +67,13 @@ export default function LoginPageView() {
           type: "manual",
           message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
         });
-        //setServerError(result.error);
         return;
       }
 
       router.push("/dashboard");
       form.reset();
     } catch (error) {
-      //setServerError("Network error. Could not connect to the server.");
+      console.error("An unexpected error occurred:", error);
     } finally {
       setLoading(false);
     }
