@@ -104,6 +104,7 @@ export default function LoginPageView() {
                     </FormLabel>
                     <FormControl>
                       <Input
+                        maxLength={254}
                         id="email"
                         type="email"
                         placeholder="name@example.com"
@@ -134,6 +135,7 @@ export default function LoginPageView() {
                     </div>
                     <FormControl>
                       <Input
+                        maxLength={64}
                         id="password"
                         type="password"
                         placeholder="••••••••"
