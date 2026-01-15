@@ -143,4 +143,8 @@
   .card-box-animate {
     @apply transition-all duration-200 hover:-translate-y-2 cursor-pointer;
   }
+
+  .primary-button-color {
+    @apply bg-gradient-to-br from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white;
+  }
 }

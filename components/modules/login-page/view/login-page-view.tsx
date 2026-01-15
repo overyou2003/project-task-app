@@ -67,6 +67,7 @@ export default function LoginPageView() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
+        credentials: "include"
       });
 
       const result = await response.json();
@@ -162,7 +163,7 @@ export default function LoginPageView() {
 
               <Button
                 type="submit"
-                className="w-full mt-4"
+                className="w-full mt-4 primary-button-color"
                 variant="loginBtn"
                 disabled={loading}
               >
