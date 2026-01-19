@@ -1,25 +1,11 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { CiSearch } from "react-icons/ci";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Avatar } from "@radix-ui/react-avatar";
-import { NavUser } from "@/components/nav-user";
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import CreateFixBtn from "@/components/btn-create-board";
-import CreateCardProject from "@/components/create-card-project";
-
-const data = {
-  user: {
-    name: "Dreams",
-    email: "m@example.com",
-    avatar: "/avatars/dreams.jpg",
-  },
-};
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (

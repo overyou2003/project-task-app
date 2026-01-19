@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   Command,
@@ -8,29 +8,31 @@ import {
   Settings2,
   SquareTerminal,
   ListTodo,
-} from "lucide-react"
+} from "lucide-react";
 
 import { GoGraph } from "react-icons/go";
 import { IoSettingsSharp } from "react-icons/io5";
 
-
-import { NavMain } from "@/components/nav-main"
-import { NavUser } from "@/components/nav-user"
+import { NavMain } from "@/components/nav-main";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 import { NavLogout } from "./nav-logout";
+import { useEffect, useState } from "react";
+import { User } from "@/types/dashboard/user";
 
 // This is sample data.
 const data = {
   user: {
     name: "Dreams",
     role: "Intern",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   navMain: [
     {
@@ -38,16 +40,14 @@ const data = {
       url: "/dashboard",
       icon: GoGraph,
       isActive: true,
-      items: [
-      ],
+      items: [],
     },
-    
+
     {
       title: "My Tasks",
       url: "#",
       icon: ListTodo,
-      items: [
-      ],
+      items: [],
     },
     {
       title: "Settings",
@@ -61,13 +61,24 @@ const data = {
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    fetch("/api/user", { credentials: "include" })
+      .then((res) => res.json())
+      .then((data) => setUser(data));
+  }, []);
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <NavUser user={data.user} />
+        <NavUser
+          user={{
+            email: user?.email || '@',
+            name: user?.name || "Guest"
+          }}
+        />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
@@ -77,5 +88,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
