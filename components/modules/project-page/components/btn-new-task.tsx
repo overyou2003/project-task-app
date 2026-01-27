@@ -11,12 +11,10 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import { ArrowRightIcon, Plus } from "lucide-react";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import { DatePicker } from "@heroui/react";
 import { DueDatePicker } from "../../../due-date-picker";
 import { Separator } from "@/components/ui/separator";
 import TagInput from "../../../tag-input";
@@ -29,7 +27,7 @@ import {
 } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 
-const BtnNewProject = () => {
+const BtnNewTask = () => {
   return (
     <>
       <div
@@ -40,31 +38,31 @@ const BtnNewProject = () => {
         <Dialog>
           <form>
             <DialogTrigger asChild>
-              <Button variant="outline">
-                <AnimatedShinyText className="cursor-pointer inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
-                  <span>✨ New Project</span>
-                  <ArrowRightIcon
-                    scale={30}
-                    className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5"
-                  />
+              <Button
+                variant="outline"
+                className="w-full border-3 border-dotted cursor-pointer hover:border-gray-400"
+              >
+                <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+                  <Plus scale={30} className="mx-2" />
+                  <span>เพิ่มงานใหม่</span>
                 </AnimatedShinyText>
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[530px]">
               <DialogHeader>
-                <DialogTitle>สร้างโปรเจกต์ใหม่</DialogTitle>
+                <DialogTitle>เพิ่มงาน</DialogTitle>
                 <DialogDescription>
-                  เริ่มต้นแผนงานใหม่ของคุณด้วยการกรอกข้อมูลพื้นฐาน
+                  เพิ่มงานใหม่ให้กับบอร์ดของคุณ
                 </DialogDescription>
               </DialogHeader>
               <Separator />
               <div className="grid gap-6 my-3">
                 <div className="grid gap-3">
-                  <Label htmlFor="name-1">ชื่อโปรเจกต์</Label>
+                  <Label htmlFor="name-1">ชื่องาน *</Label>
                   <Input
                     id="name-1"
                     name="name"
-                    placeholder="กรุณากรอกชื่อโปรเจกต์ของคุณ"
+                    placeholder="กรุณากรอกชื่องาน"
                   />
                 </div>
                 <div className="grid gap-3">
@@ -72,7 +70,7 @@ const BtnNewProject = () => {
                   <Textarea
                     id="username-1"
                     name="username"
-                    placeholder="กรุณากรอกคำอธิบายโปรเจกต์ของคุณ"
+                    placeholder="กรุณากรอกคำอธิบายงาน"
                   />
                 </div>
                 <div className="grid gap-3">
@@ -83,8 +81,11 @@ const BtnNewProject = () => {
                     <CardContent className="p-1">
                       <Collapsible className="data-[state=open] rounded-md">
                         <CollapsibleTrigger asChild>
-                          <Button variant="ghost" className="group w-full cursor-pointer">
-                            <Label htmlFor="desc">แท็ก / หมวดหมู่</Label>
+                          <Button
+                            variant="ghost"
+                            className="group w-full cursor-pointer"
+                          >
+                            <Label htmlFor="desc">Tags งาน</Label>
                             <ChevronDown className="ml-auto group-data-[state=open]:rotate-180" />
                           </Button>
                         </CollapsibleTrigger>
@@ -100,7 +101,10 @@ const BtnNewProject = () => {
                     <CardContent className="p-1">
                       <Collapsible className="data-[state=open] rounded-md">
                         <CollapsibleTrigger asChild>
-                          <Button variant="ghost" className="group w-full cursor-pointer">
+                          <Button
+                            variant="ghost"
+                            className="group w-full cursor-pointer"
+                          >
                             <Label htmlFor="desc">ระดับความสำคัญ</Label>
                             <ChevronDown className="ml-auto group-data-[state=open]:rotate-180" />
                           </Button>
@@ -132,4 +136,4 @@ const BtnNewProject = () => {
     </>
   );
 };
-export default BtnNewProject;
+export default BtnNewTask;

@@ -31,7 +31,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="th">
-      <body className={`${poppins.variable} ${anuphan.variable} antialiased min-h-screen`}>
+      <body className={`${poppins.variable} ${anuphan.variable} antialiased min-h-screen overflow-x-hidden`}>
         {children}
       </body>
     </html>

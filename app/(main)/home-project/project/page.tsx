@@ -2,9 +2,7 @@ import ProjectPageView from "@/components/modules/project-page/view/project-page
 
 const ProjectPage = () => {
   return (
-    <div className="w-full h-full">
-        <ProjectPageView />
-    </div>
+      <ProjectPageView />
   )
 }
 export default ProjectPage
