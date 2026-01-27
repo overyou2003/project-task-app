@@ -11,16 +11,12 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import { ArrowRightIcon, Plus } from "lucide-react";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import { DatePicker } from "@heroui/react";
-import { DueDatePicker } from "../../../due-date-picker";
+import { DueDatePicker } from "./due-date-picker";
 import { Separator } from "@/components/ui/separator";
-import TagInput from "../../../tag-input";
-import PiorityLevel from "../../../piority-level";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Collapsible,
@@ -29,7 +25,7 @@ import {
 } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 
-const BtnNewProject = () => {
+const ModalInput = () => {
   return (
     <>
       <div
@@ -132,4 +128,4 @@ const BtnNewProject = () => {
     </>
   );
 };
-export default BtnNewProject;
+export default ModalInput;
